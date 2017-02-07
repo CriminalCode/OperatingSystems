@@ -23,10 +23,10 @@ public class Shell
         
         while(running)
         {
-        folder = new File(directory);
-        System.out.print("CoolShell>h");
-        System.out.println("\n");
-        UserInput = key.nextLine();
+            folder = new File(directory);
+            System.out.print("CoolShell>h");
+            System.out.println("\n");
+            UserInput = key.nextLine();
         
         if(UserInput.equals("l") || UserInput.equals("list"))
             list();
@@ -52,13 +52,8 @@ public class Shell
         }
         //Check is file or is directory
             System.out.print("CoolShell>h");
-        
-
-        
+      }
     }
-    
-       }
-    
     
       private void pWelcome()
     {
@@ -91,17 +86,22 @@ public class Shell
     
     private void up()
     {
-      if(directory.contains("/"))
+        if(directory.length() - directory.replace("/","").length() >= 2 /*|| directory.length() - directory.replace("\\","").length() != 2*/)
+        {
+                  if(directory.contains("/"))
          charplace = directory.lastIndexOf("/");
-    
+      
+      
       else if(directory.contains("\\"))
          charplace = directory.lastIndexOf("\\");
-        
+
         directory = directory.substring(0, charplace);
         Clean();
         System.out.println(directory);
+        }
         
-
+      else 
+        w();
     }
     
     public void w()
