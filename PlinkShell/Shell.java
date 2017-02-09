@@ -118,8 +118,8 @@ public class Shell
         
         for(File file : listOfFiles)
         {
-    
-            if(file.getName().equals(cd[1]))
+           
+            if(file.getName().equals(cd[1]) && file.isDirectory())
              {
                  if(directory.contains("/"))
                  {
@@ -134,11 +134,12 @@ public class Shell
                  listOfFiles = folder.listFiles();
                  dirExists = true;
              }
+             
         }
         
         if(dirExists == false)
         {
-            System.out.println("Sorry " + cd[1] + "is not a directory");
+            System.out.println("Sorry " + cd[1] + " is not a directory");
         }
         
         w();
