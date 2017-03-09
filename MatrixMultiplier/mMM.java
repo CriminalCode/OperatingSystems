@@ -66,12 +66,23 @@ public class mMM
 			  throw new Exception("Thread completion error!");
 		}*/
 		executor.shutdown();
-       //
-     
-        
-         System.out.println(c.toString());
+
+         //System.out.println(c.toString());
         
          System.out.println(c.getCellTotal());
+         
+
+
+try{
+    PrintWriter writer = new PrintWriter("Output.txt", "UTF-8");
+    writer.println(c.toString());
+    writer.close();
+} catch (IOException e) {
+   // do something
+}
+
+
+//////               
     }
     
     public class MyThread implements Callable<Boolean>
