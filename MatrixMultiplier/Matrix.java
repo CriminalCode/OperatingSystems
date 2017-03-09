@@ -3,14 +3,12 @@ import java.util.*;
 
  public class Matrix
  {
-    //ArrayList<String[]> Matrix = new ArrayList<String[]>();
     ArrayList<String[]> firstMatrix = new ArrayList<String[]>();
     
     public Matrix(String FileName)
     {
         BufferedReader reader;
         String newLine;
-        //ArrayList<String[]> firstMatrix = new ArrayList<String[]>();
         try 
         {
         
@@ -20,7 +18,7 @@ import java.util.*;
         
        while(newLine != null)
        {
-           //System.out.println( newLine);
+           
            row = newLine.split(",");
            firstMatrix.add(row);
            newLine = reader.readLine();
@@ -47,11 +45,7 @@ import java.util.*;
            row = new String[r];
            Arrays.fill(row, "0");
            firstMatrix.add(row);
-          
-          //System.out.println(Arrays.toString(row));
         }
-           
-        
     }
     
  public int getCellTotal()
@@ -83,7 +77,6 @@ import java.util.*;
  
  public int getCell(int row, int column)
  {
-     //System.out.println(column);
      String[] temp = firstMatrix.get(row);
      return Integer.parseInt(temp[column]);
  }
