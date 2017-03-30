@@ -11,9 +11,9 @@ public class PaperSmoker extends Smoker
     {
        while(true)
        {
-           Match.acquire();
+           Tobacco.acquire();
            
-           if(Tobacco.tryAcquire())
+           if(Match.tryAcquire())
            {
                System.out.println("The Paper Smoker Is Smoking");
                Thread.sleep(1000);
@@ -22,7 +22,7 @@ public class PaperSmoker extends Smoker
            
            else
            {
-               Tobacco.release();
+               Match.release();
            }
        }
     } 

@@ -9,15 +9,14 @@ public class Dealer extends Smoker
     Random random = new Random();
     public Boolean call()
     {
-        // use random
-        //int t = 1000;
         
         try 
         {
             while(true)
         {
-            
-         Thread.sleep(1000);
+         // use random
+        int seconds = random.nextInt(500) + 500; // .5 and up
+         Thread.sleep(seconds);
         
          int flip = random.nextInt(3); // this is so we can generate products randomly
         
