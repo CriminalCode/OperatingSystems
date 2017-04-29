@@ -3,12 +3,13 @@ import java.io.*;
 import java.util.*;
 
 public class main{
-    public static void main(String [] args){
+    public static void main(String [] args) throws Exception
+    {
         (new main()).go();}
     
     
     
-    private void go()/*throws Exception*/ {
+    private void go() throws Exception {
          Scanner key = new Scanner(System.in);
          System.out.println("Please enter n");
          int n = key.nextInt();
@@ -19,34 +20,42 @@ public class main{
          
          for(int i = 0; i < n; i++)
          {
-             firstNumber[0]= random.nextInt(15) + 1;
+             firstNumber[0] = random.nextInt(15) + 1;
+             
+             //System.out.println(firstNumber[0]);
              
              group tempGroup = new group(firstNumber); 
              
              gArray[i] = tempGroup; 
          }
         
-         /*for(group g : gArray)
-            System.out.println(number);*/
+          /*for(group g : gArray)
+            System.out.println(g.toString());*/
             
         List<Callable<group>> tasks = new ArrayList<Callable<group>>();
         
         while(n >= 1)
         {
+            System.out.println("B");
             for(int i = 0; i < n; i = i +2)
             {
+                System.out.println("Boom");
+                System.out.println(n);
+              System.out.println("i is " + i);
+                
               Callable<group> task = new MyThread(gArray[i], gArray[i+1]);
               tasks.add(task);
             }
             
-        ExecutorService executor = Executors.newFixedThreadPool(n);
+        ExecutorService executor = Executors.newFixedThreadPool(4);
         
 		List<Future<group>> futures = executor.invokeAll(tasks);
 
         group[] tempGroup = new group[n/2];
         
-        for(int i = 0; i < futures.length; i++)
+        for(int i = 0; i < futures.size(); i++)
         {
+            System.out.println("Futures Size " + futures.size());
             tempGroup[i] = futures.get(i).get();
             //We are getting the groups that the threads will return 
         }
@@ -56,10 +65,11 @@ public class main{
 		executor.shutdown();
             
             n = n/2;
+            tasks.clear();
         }
         
-        for(int i = 0; i < gArray.length; i++)
-            System.out.println(gArray[i].toString());
+       /* for(int i = 0; i < gArray.length; i++)
+            System.out.println(gArray[i].toString());*/
     }
     
     public class MyThread implements Callable<group>
@@ -87,7 +97,7 @@ public class main{
         
     }
     
-    public static int[] merge(int[] a, int[] b)
+    public static group merge(int[] a, int[] b)
     {
         int[] answer = new int[a.length+b.length];
         int i = 0, j = 0, k = 0;
@@ -101,7 +111,9 @@ public class main{
         while(j < b.length)
             answer[k++] = b[j++];
             
-        return answer;
+        group ret = new group(answer);
+        
+        return ret;
             
     }
 }
