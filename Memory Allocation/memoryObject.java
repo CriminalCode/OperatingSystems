@@ -4,8 +4,9 @@ public class memoryObject
     int size = 0;
     String holeOrnot = "Used";
     
-    public memoryObject(int strt, int si, String holeorother)
+    public memoryObject(int strt, int si, String holeorother, int id)
     {
+        ID = id;
         start = strt;
         size = si;
         holeOrnot = holeorother;
