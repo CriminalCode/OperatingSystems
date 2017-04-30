@@ -1,18 +1,18 @@
 public class group
 {
-    int numberArray[];
+   public int[] numberArray;
     int number;
     
-    group(/*int n,*/ int[] array)
+    group(int[] array)
     {
-        /*number = n;*/
+        
         numberArray = array;
     }
     
-    group(/*int n,*/ int n)
+    /*group( int n)
     {
         number = n;
-    }
+    }*/
     
     @Override
     public String toString()

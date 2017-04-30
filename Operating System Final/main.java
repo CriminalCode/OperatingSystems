@@ -22,25 +22,27 @@ public class main{
          {
              firstNumber[0] = random.nextInt(15) + 1;
              
-             //System.out.println(firstNumber[0]);
+             System.out.println("Random Numnber = " + firstNumber[0]);
              
              group tempGroup = new group(firstNumber); 
              
              gArray[i] = tempGroup; 
          }
         
-          /*for(group g : gArray)
-            System.out.println(g.toString());*/
+          for(group g : gArray)
+            System.out.println(g.toString());
+            
+            
             
         List<Callable<group>> tasks = new ArrayList<Callable<group>>();
         
-        while(n >= 1)
+        while(n > 1)
         {
             System.out.println("B");
             for(int i = 0; i < n; i = i +2)
             {
                 System.out.println("Boom");
-                System.out.println(n);
+                System.out.println("n = " + n);
               System.out.println("i is " + i);
                 
               Callable<group> task = new MyThread(gArray[i], gArray[i+1]);
@@ -68,8 +70,8 @@ public class main{
             tasks.clear();
         }
         
-       /* for(int i = 0; i < gArray.length; i++)
-            System.out.println(gArray[i].toString());*/
+        for(int i = 0; i < gArray.length; i++)
+            System.out.println(gArray[i].toString());
     }
     
     public class MyThread implements Callable<group>
