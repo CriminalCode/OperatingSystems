@@ -7,8 +7,6 @@ public class main{
     {
         (new main()).go();}
     
-    
-    
     private void go() throws Exception {
          Scanner key = new Scanner(System.in);
          System.out.println("Please enter n");
@@ -22,16 +20,11 @@ public class main{
          {
              firstNumber = new int[1];
              firstNumber[0] = random.nextInt(15) + 1;
-             
-             System.out.println("Random Numnber = " + firstNumber[0]);
-             
              group tempGroup = new group(firstNumber); 
              
              gArray[i] = tempGroup; 
          }
         
-          for(group g : gArray)
-            System.out.println(g.toString());
             
             
             
@@ -39,13 +32,8 @@ public class main{
         
         while(n > 1)
         {
-            System.out.println("B");
             for(int i = 0; i < n; i = i +2)
             {
-                System.out.println("Boom");
-                System.out.println("n = " + n);
-              System.out.println("i is " + i);
-                
               Callable<group> task = new MyThread(gArray[i], gArray[i+1]);
               tasks.add(task);
             }
@@ -58,13 +46,11 @@ public class main{
         
         for(int i = 0; i < futures.size(); i++)
         {
-            System.out.println("Futures Size " + futures.size());
             tempGroup[i] = futures.get(i).get();
             //We are getting the groups that the threads will return 
         }
         
         gArray = tempGroup;
-		
 		executor.shutdown();
             
             n = n/2;
@@ -80,7 +66,6 @@ public class main{
         private group g1;
         private group g2;
     
-        
         public MyThread(group one, group two)
         {
             g1 = one;
@@ -90,9 +75,9 @@ public class main{
         @Override
       public group call()
       {
+          
           int[] temp1 = g1.numberArray;
           int[] temp2 = g2.numberArray;
-          
           
           return merge(temp1, temp2);
       }
