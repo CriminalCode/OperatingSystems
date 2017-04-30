@@ -1,6 +1,6 @@
 public class group
 {
-   public int[] numberArray;
+    int[] numberArray;
     int number;
     
     group(int[] array)
@@ -21,7 +21,7 @@ public class group
      
      for(int in : numberArray)
      {
-        temp = temp + in;
+        temp = temp + in + ",";
      }
      return temp;
  }

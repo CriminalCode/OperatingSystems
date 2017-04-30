@@ -13,8 +13,10 @@ public class d
          int[] firstNumber = new int[1];
          Random random = new Random();
          
+         
          for(int i = 0; i < n; i++)
          {
+             firstNumber = new int[1];
              firstNumber[0] = random.nextInt(15) + 1;
              
              System.out.println("Random Number = " + firstNumber[0]);
@@ -24,6 +26,8 @@ public class d
              System.out.println(tempGroup.toString());
              
              gArray[i] = tempGroup; 
+             
+        
          }
         
           for(group g : gArray)

@@ -20,6 +20,7 @@ public class main{
          
          for(int i = 0; i < n; i++)
          {
+             firstNumber = new int[1];
              firstNumber[0] = random.nextInt(15) + 1;
              
              System.out.println("Random Numnber = " + firstNumber[0]);
